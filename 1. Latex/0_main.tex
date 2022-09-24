@@ -227,7 +227,15 @@
 \usepackage{url}
 \usepackage{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-\hypersetup{hidelinks}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=black,
+    pdftitle={Belegarbeit Computational Intelligence},
+    pdfpagemode=UseOutlines,
+}
 \urlstyle{same}
 
 %--------------------------------------------------------------------------
@@ -437,6 +445,7 @@
 \nocite{Wikipedia2022}
 \nocite{Vasudevan2020}
 \nocite{Sonwane2020}
+\nocite{Brownlee2017}
 
 \printbibliography[
 	heading=subbibintoc,
