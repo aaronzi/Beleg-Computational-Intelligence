@@ -1,6 +1,6 @@
 \section{Versuchsaufbau und Inbetriebnahme} \label{sec:versuchsaufbau}
 
-Bevor das Roboterfahrzeug (im Folgenden bezeichnet mit \glqq Jetbot\grqq{}) programmiert und getestet werden kann auf seine Fähigkeiten sich autonom mittels CNN und Transfer Learning fortzubewegen und dabei jegliche Kollisionen zu vermeiden, muss dieses zunächst gebaut und in Betrieb genommen werden. Dieser Abschnitt wird einen kurzen Überblick über die verwendete Hardware geben und kurz beschreiben, wie der Jetbot zum Programmieren aufgesetzt wird. 
+Bevor das Roboterfahrzeug (im Folgenden bezeichnet mit \glqq Jetbot\grqq{}) programmiert und auf seine Fähigkeiten, sich autonom mittels CNN und Transfer Learning fortzubewegen und dabei jegliche Kollisionen zu vermeiden, getestet werden kann, muss dieses zunächst gebaut und in Betrieb genommen werden. Dieser Abschnitt wird einen kurzen Überblick über die verwendete Hardware geben und kurz beschreiben, wie der Jetbot zum Programmieren aufgesetzt wird. 
 
 \subsection{Benötigte Komponenten}
 
@@ -59,7 +59,7 @@ Bevor das Roboterfahrzeug (im Folgenden bezeichnet mit \glqq Jetbot\grqq{}) prog
 
 \subsection{Hardware-Setup}
 
-Zunächst werden die Motoren auf der Grundfläche des Gehäuses verschraubt. Dieses kann nachfolgen geschlossen werden mit den restlichen Karosserieteilen. Es bietet sich an im nächsten schritt die Räder und Kugelrollen zu montieren, so dass das Gefährt aufrecht stehen kann. Darauf werden die Akkus in dem Erweiterungsboard installiert sowie Abstandshalter an den Ecken angebracht. Das Erweiterungsboard kann dann auf der Karosserie angebracht werden mit vier M2 Schrauben. Auf den im vorherigen Schritt montierten Abstandshaltern wird der Jetson Nano Controller befestigt. Über das 6-Pin Kabel wird anschließend das Erweiterungsboard mit dem Jetson Nano verbunden. Im Anschluss wird der Lüfter auf dem Kühlkörper angebracht und das Lüfterkabel in den PWM-Anschluss gesteckt. Im letzten Schritt wird die Kamerabefestigung am Gehäuse angebracht, der Abstandshalter aus Acryl an an dieser angeschraubt und Abschließend die Kamera montiert. \autoref{fig:Bild3.3} zeigt den fertigen Aufbau des Jetbot Roboterfahrzeugs.
+Zunächst werden die Motoren auf der Grundfläche des Gehäuses verschraubt. Dieses kann nachfolgend mit den restlichen Karosserieteilen geschlossen werden. Es bietet sich an, im nächsten Schritt die Räder und Kugelrollen zu montieren, so dass das Gefährt aufrecht stehen kann. Darauf werden die Akkus in dem Erweiterungsboard installiert, sowie Abstandshalter an den Ecken angebracht. Das Erweiterungsboard kann dann auf der Karosserie mit vier M2 Schrauben angebracht werden. Auf den im vorherigen Schritt montierten Abstandshaltern wird der Jetson Nano Controller befestigt. Über das 6-Pin Kabel wird anschließend das Erweiterungsboard mit dem Jetson Nano verbunden. Im Anschluss wird der Lüfter auf dem Kühlkörper angebracht und das Lüfterkabel in den PWM-Anschluss gesteckt. Im letzten Schritt wird die Kamerabefestigung am Gehäuse angebracht, der Abstandshalter aus Acryl an dieser angeschraubt und abschließend die Kamera montiert. \autoref{fig:Bild3.3} zeigt den fertigen Aufbau des Jetbot Roboterfahrzeugs.
 
 \begin{figure}[H]
     \centering
@@ -70,7 +70,7 @@ Zunächst werden die Motoren auf der Grundfläche des Gehäuses verschraubt. Die
 
 \subsection{Software-Setup}
 
-Der erste Schritt ist es sich ein von Nvidia für den Jetson Nano bereitgestelltes Image auf die SD-Karte herunterzuladen. Dieses beinhaltet Ubuntu Linux als Betriebssystem, sämtliche notwendigen Treiber für die Betriebsmittel wie \zB die Kamera und besitzt bereits eine Installation für Python inklusive Jupyter und PyTorch. Worum es sich dabei handelt wird in \autoref{sec:durchführung} geklärt.\\
+Der erste Schritt ist, sich ein von Nvidia für den Jetson Nano bereitgestelltes Image auf die SD-Karte herunterzuladen. Dieses beinhaltet Ubuntu Linux als Betriebssystem, sämtliche notwendigen Treiber für die Betriebsmittel (\zB die Kamera) und besitzt bereits eine Installation für Python inklusive Jupyter und PyTorch. Worum es sich dabei handelt wird in \autoref{sec:durchführung} geklärt.\\
 Die folgenden Schritte sind notwendig, um das Image auf die SD-Karte zu spielen:
 
 \begin{enumerate}
@@ -79,14 +79,14 @@ Die folgenden Schritte sind notwendig, um das Image auf die SD-Karte zu spielen:
     \item SD-Karte in den Jetson Nano einstecken.
 \end{enumerate}
 
-Der nächste Schritt kann abweichen je nach gewählter Methode. Grundsätzlich ist das Ziel den Jetson Nano mit einem WLAN-Netzwerk zu verbinden. Dazu kann entweder ein Monitor an den HDMI-Port, sowie Maus und Tastatur per USB angeschlossen werden. Nach dem Booten des Systems ist es dann möglich über die Netzwerkeinstellungen eine Verbindung zum WLAN herzustellen. Alternativ ist es möglich über \zB Putty unter Windows oder über das Terminal in Linux oder MACOS auf den Jetson Nano zuzugreifen. Anschließend wird die Verbindung hergestellt über das Kommando\\
+Der nächste Schritt kann je nach gewählter Methode abweichen. Grundsätzlich ist das Ziel, den Jetson Nano mit einem WLAN-Netzwerk zu verbinden. Dazu kann entweder ein Monitor an den HDMI-Port, sowie Maus und Tastatur per USB angeschlossen werden. Nach dem Booten des Systems ist es dann über die Netzwerkeinstellungen möglich, eine Verbindung zum WLAN herzustellen. Alternativ ist es über \zB Putty unter Windows oder über das Terminal in Linux oder MACOS möglich, auf den Jetson Nano zuzugreifen. Anschließend wird die Verbindung über das folgende Kommando hergestellt.\\
 
 \texttt{sudo nmcli device wifi connect <SSID> password <PASSWORD>}. \\
 
 Der Mikrocontroller verbindet sich nun nach dem Einschalten automatisch mit dem ausgewählten Netzwerk. Nachfolgend kann der Jetbot über den Browser eines beliebigen Endgerätes genutzt werden. Dazu sind folgende Schritte notwendig:
 
 \begin{enumerate}
-    \item Jetbot einschalten über den Power-Schalter
+    \item Jetbot über den Power-Schalter einschalten
     \item Warten, bis der Bootvorgang abgeschlossen ist
     \item Die IP-Adresse am piOLED-Display ablesen
     \item Über den Browser eines beliebigen Gerätes im selben Netzwerk navigieren zu \\\texttt{http://<jetbot_ip_address>:8888}
@@ -102,7 +102,7 @@ Nachdem über den Browser erfolgreich eine Verbindung hergestellt wurde, wird di
     \label{fig:Bild3.4}
 \end{figure}
 
-Zu sehen ist die Oberfläche JupyterLab. Dabei handelt es sich um ein Interface für Jupyter Notebooks. Solch ein Notebook ist grundsätzlich ein aus dem Web aufrufbares Python-Programm. Python meint hier die Programmiersprache in der Version 3.X. Das besondere an einem Jupyter Notebook ist, dass der Code in diesem nicht zwangsläufig in der gegebenen Reihenfolge ausgeführt werden muss. Weiterhin werden bereits berechnete Ergebnisse gespeichert und können zu jedem Zeitpunkt weiter genutzt werden, ohne das ein erneutes Ausführen nötig ist. Das ist besonders hilfreich bei dem Trainieren von neuronalen Netzen, da ein Code-Segment mitunter Stunden oder Tage braucht, um abgearbeitet zu werden. Müsste dies jedes Mal auf ein neues geschehen, würde das viel Zeit in Anspruch nehmen. \autoref{fig:Bild3.5} zeigt ein beispielhaftes Notebook. Als weiterer Vorteil ist zu erkennen, dass ebenso Text wie Code eingebunden werden kann. Somit bietet es sich an die Dokumentation \bzw Beschreibung des Programms in der selben Datei vorzunehmen. Mit Ausblick auf die Programme in den umgesetzten Notebooks für den Jetbot ist zu erwähnen, dass dies dort ebenso vorgenommen wurde. Sämtliche Jupyter Notebooks für die Umsetzung der Kollisionsvermeidung sind im Anhang zu finden.
+Zu sehen ist die Oberfläche JupyterLab. Dabei handelt es sich um ein Interface für Jupyter Notebooks. Solch ein Notebook ist grundsätzlich ein aus dem Web aufrufbares Python-Programm. Python meint hier die Programmiersprache in der Version 3.X. Das besondere an einem Jupyter Notebook ist, dass der Code in diesem nicht zwangsläufig in der gegebenen Reihenfolge ausgeführt werden muss. Weiterhin werden bereits berechnete Ergebnisse gespeichert und können zu jedem Zeitpunkt weiter genutzt werden, ohne das ein erneutes Ausführen nötig ist. Das ist besonders hilfreich bei dem Trainieren von neuronalen Netzen, da ein Code-Segment mitunter Stunden oder Tage braucht, um abgearbeitet zu werden. Müsste dies jedes Mal auf ein neues geschehen, würde das viel Zeit in Anspruch nehmen. \autoref{fig:Bild3.5} zeigt ein beispielhaftes Notebook. Als weiterer Vorteil ist zu erkennen, dass ebenso Text wie Code eingebunden werden kann. Somit bietet es sich an, die Dokumentation \bzw Beschreibung des Programms in der selben Datei vorzunehmen. Mit Ausblick auf die Programme in den umgesetzten Notebooks für den Jetbot ist zu erwähnen, dass dies dort ebenso vorgenommen wurde. Sämtliche Jupyter Notebooks für die Umsetzung der Kollisionsvermeidung sind im Anhang zu finden.
 
 \begin{figure}[H]
     \centering
